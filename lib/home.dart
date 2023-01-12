@@ -1,7 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:commerceapp/database/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:commerceapp/add_product_page.dart';
+
+
+
 
 
 class Home extends StatefulWidget {
@@ -12,8 +16,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final List<Widget>_children = [
-  ];
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +27,16 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         elevation: 0,
-        title: const Text('Dress shop'),
+        title: Text('Dress shop'),
+        centerTitle: true,
+
 
         leading: IconButton(
-          icon: const Icon(Icons.add),
+          icon: const Icon(Icons.person),
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
               builder: (BuildContext context) {
-                return const AddPage();
+                return  Profile();
               },
               fullscreenDialog: true,
             ));
@@ -113,7 +120,7 @@ class _ProductsInformationState extends State<ProductsInformation> {
                         ],
                       )),
                   new ElevatedButton(onPressed: () => {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Home()))
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => AddPage()))
                   }
                       , child: Text("ADD product"))
                 ],

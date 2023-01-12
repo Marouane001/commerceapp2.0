@@ -26,7 +26,13 @@ class _State extends State<Signup> {
 
   Future<void> Signup() async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      FirebaseFirestore.instance.collection('User').add({
+        'name': _name.value.text,
+        'email': _email.value.text,
+      });
+      Navigator.pop(context);
+      UserCredential userCredential = await FirebaseAuth.instance.
+      createUserWithEmailAndPassword(
           email: _email.text.trim(), password: _password.text.trim());
       Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
     } catch (e) {
@@ -89,8 +95,11 @@ class _State extends State<Signup> {
             SizedBox(
               height: 20,
             ),
-
               new ElevatedButton(onPressed: Signup, child: Text("Done")),
+             new ElevatedButton(onPressed: () => {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp()))
+          }
+          ,child: Text("Back")),
 
           ],
         ),

@@ -25,6 +25,7 @@ class _AddPageState extends State<AddPage> {
           backgroundColor: Colors.black,
           elevation: 0,
           title: const Text('Your Product '),
+          centerTitle: true,
         ),
         body: Container(
 
