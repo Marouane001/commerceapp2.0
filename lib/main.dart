@@ -63,7 +63,16 @@ class _State extends State<MyApp> {
               decoration: new InputDecoration(
                   labelText: 'password',
                   hintText: 'password',
-                  icon: new Icon(Icons.people)),
+                  suffixIcon: const Padding(
+                      padding: const EdgeInsets.only(top: 15.0),
+                      child: const Icon(
+                        Icons.lock_outline,
+                        color: Colors.white,
+                      )
+                  ),
+
+                  prefixIcon: new Icon(Icons.people)),
+              obscureText: true,
               keyboardType: TextInputType.text,
               controller: _password,
             ),

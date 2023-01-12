@@ -15,7 +15,9 @@ class Signup extends StatefulWidget {
 class _State extends State<Signup> {
   TextEditingController _email = new TextEditingController();
   TextEditingController _password = new TextEditingController();
+  TextEditingController _confirmpassword = new TextEditingController();
   TextEditingController _name = new TextEditingController();
+  final GlobalKey<FormState> _form = GlobalKey<FormState>();
 
   @override
   void dispose(){
@@ -30,7 +32,6 @@ class _State extends State<Signup> {
         'name': _name.value.text,
         'email': _email.value.text,
       });
-      Navigator.pop(context);
       UserCredential userCredential = await FirebaseAuth.instance.
       createUserWithEmailAndPassword(
           email: _email.text.trim(), password: _password.text.trim());
@@ -79,25 +80,43 @@ class _State extends State<Signup> {
               decoration: new InputDecoration(
                   labelText: 'password',
                   hintText: 'password',
-                  icon: new Icon(Icons.people)),
+                  suffixIcon: const Padding(
+                      padding: const EdgeInsets.only(top: 15.0),
+                      child: const Icon(
+                        Icons.lock_outline,
+                        color: Colors.white,
+                      )
+                  ),
+
+                  prefixIcon: new Icon(Icons.people)),
+              obscureText: true,
               keyboardType: TextInputType.text,
               controller: _password,
+
             ),
             new TextField(
               decoration: new InputDecoration(
                   labelText: 'confirm your password ',
                   hintText: 'confirm your password ',
-                  prefixIcon: new Icon(Icons.people),
+                suffixIcon: const Padding(
+                    padding: const EdgeInsets.only(top: 15.0),
+                    child: const Icon(
+                      Icons.lock_outline,
+                      color: Colors.white,
+                    )
+                ),prefixIcon: new Icon(Icons.people),
                   ),
+              obscureText: true,
               keyboardType: TextInputType.text,
-              controller: _password,
+              controller: _confirmpassword,
+
             ),
             SizedBox(
               height: 20,
             ),
               new ElevatedButton(onPressed: Signup, child: Text("Done")),
              new ElevatedButton(onPressed: () => {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Home()))
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp()))
           }
           ,child: Text("Back")),
 
