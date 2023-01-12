@@ -12,12 +12,9 @@ import '../reusable_widgets/reusable_widget.dart';
 class Profile extends StatelessWidget {
   Profile({Key? key}) : super(key: key);
 
-  void SignOut() {
-
-    FirebaseAuth.instance.signOut();
     //yassine@gmail.com
     //y123456
-  }
+
 
   final user = FirebaseAuth.instance.currentUser!;
 

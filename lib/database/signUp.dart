@@ -97,7 +97,7 @@ class _State extends State<Signup> {
             ),
               new ElevatedButton(onPressed: Signup, child: Text("Done")),
              new ElevatedButton(onPressed: () => {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp()))
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Home()))
           }
           ,child: Text("Back")),
 
